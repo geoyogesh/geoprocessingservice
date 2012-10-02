@@ -13,6 +13,7 @@ namespace GeoprocessingService.Models
             HasResult = false;
         }
 
+
         public int OutSR { get; set; }
 
         public int ProcessSR { get; set; }
