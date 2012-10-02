@@ -28,6 +28,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -70,14 +72,63 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bootstrap-responsive.css" />
+    <Content Include="Content\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\Images\glyphicons-halflings-white.png" />
+    <Content Include="Content\css\Images\glyphicons-halflings.png" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\img\browsers.png" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\img\glyphicons\glyphicons_009_magic.png" />
+    <Content Include="Content\img\glyphicons\glyphicons_042_group.png" />
+    <Content Include="Content\img\glyphicons\glyphicons_079_podium.png" />
+    <Content Include="Content\img\glyphicons\glyphicons_082_roundabout.png" />
+    <Content Include="Content\img\glyphicons\glyphicons_155_show_thumbnails.png" />
+    <Content Include="Content\img\glyphicons\glyphicons_163_iphone.png" />
+    <Content Include="Content\img\glyphicons\glyphicons_214_resize_small.png" />
+    <Content Include="Content\img\glyphicons\glyphicons_266_book_open.png" />
+    <Content Include="Content\img\grid-18px-masked.png" />
+    <Content Include="Content\img\icon-css3.png" />
+    <Content Include="Content\img\icon-html5.png" />
+    <Content Include="Content\js\application.js" />
+    <Content Include="Content\js\bootstrap-alert.js" />
+    <Content Include="Content\js\bootstrap-button.js" />
+    <Content Include="Content\js\bootstrap-carousel.js" />
+    <Content Include="Content\js\bootstrap-collapse.js" />
+    <Content Include="Content\js\bootstrap-dropdown.js" />
+    <Content Include="Content\js\bootstrap-modal.js" />
+    <Content Include="Content\js\bootstrap-popover.js" />
+    <Content Include="Content\js\bootstrap-scrollspy.js" />
+    <Content Include="Content\js\bootstrap-tab.js" />
+    <Content Include="Content\js\bootstrap-tooltip.js" />
+    <Content Include="Content\js\bootstrap-transition.js" />
+    <Content Include="Content\js\bootstrap-typeahead.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\google-code-prettify\prettify.css" />
+    <Content Include="Content\js\google-code-prettify\prettify.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\modernizr-2.5.3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modules\RootModules.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Models\BaseGPModel.cs" />
+    <Compile Include="Models\Execute.cs" />
+    <Compile Include="Modules\Population_World_Module.cs" />
+    <Compile Include="Modules\Population_World_Task_Execute_Module.cs" />
+    <Compile Include="Modules\Population_World_Task_Module.cs" />
+    <Compile Include="Modules\RootModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Content\Web.config" />
+    <Content Include="Views\Execute.cshtml" />
+    <Content Include="GeoprocessingService.pfx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -85,9 +136,21 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GISServer.Core\GISServer.Core.csproj">
+      <Project>{229eae7f-5966-4d23-b8de-a0c19abb1bd9}</Project>
+      <Name>GISServer.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>GeoprocessingService.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -98,7 +161,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>4884</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:1902/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
